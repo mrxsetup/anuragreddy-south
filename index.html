@@ -9,21 +9,21 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 
 body{
-  min-height:100vh;
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   background:#111;
 }
 
-/* iPhone Frame */
+/* SMALLER iPhone Frame */
 .phone-frame{
-  width:390px;
-  height:780px;
+  width:340px;
+  height:680px;
   background:#000;
-  border-radius:50px;
-  padding:18px;
-  box-shadow:0 0 40px rgba(0,0,0,0.9);
+  border-radius:45px;
+  padding:14px;
+  box-shadow:0 0 35px rgba(0,0,0,0.9);
   position:relative;
 }
 
@@ -31,21 +31,21 @@ body{
 .phone-frame::before{
   content:'';
   position:absolute;
-  top:10px;
+  top:8px;
   left:50%;
   transform:translateX(-50%);
-  width:180px;
-  height:35px;
+  width:150px;
+  height:28px;
   background:#000;
   border-radius:20px;
   z-index:20;
 }
 
-/* Screen */
+/* Screen Background */
 .screen{
   width:100%;
   height:100%;
-  border-radius:35px;
+  border-radius:30px;
   overflow:hidden;
   background:url('https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true') no-repeat center center;
   background-size:cover;
@@ -53,7 +53,7 @@ body{
   color:#fff;
 }
 
-/* Overlay */
+/* Dark Overlay */
 .screen::after{
   content:"";
   position:absolute;
@@ -68,12 +68,12 @@ body{
 /* STATUS BAR */
 .status-bar{
   position:absolute;
-  top:8px;
+  top:6px;
   width:100%;
   display:flex;
   justify-content:space-between;
-  padding:0 25px;
-  font-size:14px;
+  padding:0 18px;
+  font-size:13px;
   font-weight:600;
   z-index:30;
 }
@@ -81,13 +81,12 @@ body{
 .status-icons{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
 }
 
-/* Battery */
 .battery{
-  width:24px;
-  height:12px;
+  width:22px;
+  height:10px;
   border:2px solid #fff;
   border-radius:3px;
   position:relative;
@@ -97,11 +96,10 @@ body{
   content:"";
   position:absolute;
   right:-4px;
-  top:3px;
+  top:2px;
   width:3px;
   height:6px;
   background:#fff;
-  border-radius:1px;
 }
 
 .battery-level{
@@ -110,36 +108,58 @@ body{
   width:80%;
 }
 
-/* Content */
+/* CONTENT */
 .card{
   position:relative;
   z-index:2;
   width:90%;
   text-align:center;
-  margin:120px auto 0 auto;
+  margin:90px auto 0 auto;
 }
 
 .avatar{
-  width:110px;
-  height:110px;
+  width:95px;
+  height:95px;
   border-radius:50%;
-  border:4px solid gold;
+  border:3px solid gold;
   object-fit:cover;
-  box-shadow:0 0 20px gold;
+  box-shadow:0 0 15px gold;
 }
 
 .name{
-  margin:18px 0;
-  font-size:26px;
+  margin:15px 0;
+  font-size:20px;
   font-weight:800;
   color:gold;
 }
 
+/* ROTATING BOX */
+.league-box{
+  position:relative;
+  width:90px;
+  height:90px;
+  margin:18px auto;
+  border-radius:20px;
+  background:linear-gradient(135deg,#00eaff,#ffd700,#ff3cac);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  box-shadow:0 0 15px #00eaff,0 0 25px #ffd700;
+}
+
+.league-box img{
+  position:absolute;
+  max-width:75%;
+  max-height:75%;
+}
+
+/* TIMER */
 .timer{
-  font-size:32px;
+  font-size:24px;
   font-weight:700;
   color:#00eaff;
-  margin:12px 0;
+  margin:10px 0;
 }
 
 .timer.alert{
@@ -149,22 +169,22 @@ body{
 
 @keyframes shake{
   0%{transform:translateX(0)}
-  25%{transform:translateX(-4px)}
-  50%{transform:translateX(4px)}
-  75%{transform:translateX(-4px)}
+  25%{transform:translateX(-3px)}
+  50%{transform:translateX(3px)}
+  75%{transform:translateX(-3px)}
   100%{transform:translateX(0)}
 }
 
 .cta{
   display:inline-block;
-  padding:14px 35px;
-  border-radius:40px;
+  padding:10px 25px;
+  border-radius:30px;
   background:#0b66ff;
   color:gold;
-  font-weight:900;
+  font-weight:800;
   text-decoration:none;
-  margin-top:15px;
-  box-shadow:0 0 20px #ffd700;
+  margin-top:12px;
+  box-shadow:0 0 15px #ffd700;
 }
 </style>
 </head>
@@ -190,6 +210,11 @@ body{
 
       <img class="avatar" src="https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true">
       <div class="name">ANURAG REDDY SOUTH</div>
+
+      <!-- ROTATING BOX -->
+      <div class="league-box">
+        <img id="logo" src="https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true">
+      </div>
 
       <div id="timer" class="timer">1:00</div>
 
@@ -218,7 +243,7 @@ function updateTime(){
 setInterval(updateTime,1000);
 updateTime();
 
-/* FAKE DYNAMIC BATTERY */
+/* BATTERY ANIMATION */
 let battery = 80;
 setInterval(()=>{
   battery = battery > 20 ? battery-1 : 80;
@@ -247,6 +272,21 @@ const countdown = setInterval(() => {
 
   totalSeconds--;
 }, 1000);
+
+/* ROTATING IMAGE */
+const imgs=[
+ "https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true",
+ "https://github.com/mrxsetup/lucknowfixer/blob/main/assets/logo16.png?raw=true",
+ "https://github.com/mrxsetup/lucknowfixer/blob/main/assets/logo15.png?raw=true"
+];
+
+let i=0;
+const logo=document.getElementById("logo");
+
+setInterval(()=>{
+  i=(i+1)%imgs.length;
+  logo.src=imgs[i];
+},2000);
 </script>
 
 </body>
