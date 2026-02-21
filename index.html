@@ -1,103 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Meta Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '25474621722164682');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=25474621722164682&ev=PageView&noscript=1"
-/></noscript>
-    <!-- End Meta Pixel Code -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHIVA REDDY</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANURAG REDDY SOUTH VIP</title>
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#111;
+}
+
+/* iPhone Frame */
+.phone-frame{
+  width:390px;
+  height:780px;
+  background:#000;
+  border-radius:50px;
+  padding:18px;
+  box-shadow:0 0 40px rgba(0,0,0,0.9);
+  position:relative;
+}
+
+/* Notch */
+.phone-frame::before{
+  content:'';
+  position:absolute;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:180px;
+  height:35px;
+  background:#000;
+  border-radius:20px;
+  z-index:10;
+}
+
+/* Screen */
+.screen{
+  width:100%;
+  height:100%;
+  border-radius:35px;
+  overflow:hidden;
+  background:linear-gradient(-45deg,#0b66ff,#0b2f70,#3a004b,#020409);
+  background-size:400% 400%;
+  animation:bgMove 12s linear infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* Card */
+.card{
+  width:90%;
+  text-align:center;
+}
+
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:4px solid gold;
+  object-fit:cover;
+  box-shadow:0 0 20px gold;
+}
+
+.name{
+  margin:18px 0;
+  font-size:26px;
+  font-weight:800;
+  color:gold;
+  text-shadow:0 0 15px gold;
+}
+
+.timer{
+  font-size:32px;
+  font-weight:700;
+  color:#00eaff;
+  margin:12px 0;
+}
+
+.vip{
+  margin:12px 0;
+  font-weight:800;
+  color:#00eaff;
+}
+
+.cta{
+  display:inline-block;
+  padding:14px 35px;
+  border-radius:40px;
+  background:#0b66ff;
+  color:gold;
+  font-weight:900;
+  text-decoration:none;
+  margin-top:15px;
+  box-shadow:0 0 20px #ffd700;
+}
+</style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-950 via-slate-900 to-stone-900 text-white">
+<body>
 
-    <!-- Card -->
-    <div class="w-[380px] rounded-3xl bg-gradient-to-b from-slate-900 to-black border border-orange-500/20 shadow-2xl p-6 text-center">
+<div class="phone-frame">
+  <div class="screen">
+    <div class="card">
 
-        <!-- Top Icon -->
-        <div class="flex justify-center">
-            <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-2xl shadow-inner">
-                🔱
-            </div>
-        </div>
+      <img class="avatar" src="https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true">
+      <div class="name">ANURAG REDDY SOUTH</div>
 
-        <!-- Profile Image -->
-        <div class="mt-4 flex justify-center">
-            <div class="relative">
-                <div class="absolute inset-0 rounded-full bg-orange-500 blur-lg opacity-30"></div>
-                <div class="relative w-24 h-24 rounded-full border-4 border-orange-400 overflow-hidden bg-black">
-                    <img src="logo.jpg" alt="Shiva Reddy" class="w-full h-full object-cover" />
-                </div>
-            </div>
-        </div>
+      <div class="timer">1:00</div>
 
-        <!-- Name -->
-        <h1 class="mt-4 text-xl font-extrabold tracking-wider">
-            SHIVA REDDY 🔱
-        </h1>
+      <p><b>🏆 IPL 2025 – 74/77 PASSED</b><br>
+      <b>🏆 BBL 2026 – 64/67 PASSED</b></p>
 
-        <!-- Subscribers -->
-        <p class="text-sm text-slate-400 mt-1">
-            62,070 subscribers
-        </p>
+      <div class="vip">💎 VIP & Paid Predictions Available</div>
 
-        <!-- Divider -->
-        <div class="my-4 h-px bg-orange-500/20"></div>
-
-        <!-- Details -->
-        <div class="text-sm text-left space-y-2 text-slate-200">
-            <p>⚕️ <span class="font-semibold">10 Year Cricket Analyst Experience</span></p>
-            <p>⚕️ No 1 Cricket Trader</p>
-            <p>⚕️ 100% Profit Guarantee</p>
-            <p>⚕️ Good Knowledge In All Leagues</p>
-            <p>⚕️ Request Accept 1 Second 🏏</p>
-        </div>
-
-        <!-- Channel Link -->
-        <p class="mt-4 text-sm text-orange-400 font-semibold">
-            Channel Link 👇
-        </p>
-
-        <!-- Username -->
-        <p class="text-sm text-slate-300 font-medium mb-3">
-            @ESJRoy12
-        </p>
-
-        <!-- Join Button -->
-        <a href="https://t.me/+AsjT1WBOlTk3ODk1" class="block w-full py-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-400 text-black font-extrabold text-lg hover:from-orange-500 hover:to-amber-500 transition-all duration-300 shadow-xl">
-      Join Channel
-    </a>
+      <a class="cta"
+      href="https://t.me/+478AfJUJOS8zYmI1">
+      JOIN TELEGRAM
+      </a>
 
     </div>
+  </div>
+</div>
 
 </body>
-
 </html>
