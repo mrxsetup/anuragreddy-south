@@ -38,7 +38,7 @@ body{
   height:35px;
   background:#000;
   border-radius:20px;
-  z-index:10;
+  z-index:20;
 }
 
 /* Screen */
@@ -47,25 +47,76 @@ body{
   height:100%;
   border-radius:35px;
   overflow:hidden;
-  background:linear-gradient(-45deg,#0b66ff,#0b2f70,#3a004b,#020409);
-  background-size:400% 400%;
-  animation:bgMove 12s linear infinite;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background:url('https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true') no-repeat center center;
+  background-size:cover;
+  position:relative;
   color:#fff;
 }
 
-@keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+/* Overlay */
+.screen::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.55);
+  top:0;
+  left:0;
+  z-index:1;
 }
 
-/* Card */
+/* STATUS BAR */
+.status-bar{
+  position:absolute;
+  top:8px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 25px;
+  font-size:14px;
+  font-weight:600;
+  z-index:30;
+}
+
+.status-icons{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* Battery */
+.battery{
+  width:24px;
+  height:12px;
+  border:2px solid #fff;
+  border-radius:3px;
+  position:relative;
+}
+
+.battery::after{
+  content:"";
+  position:absolute;
+  right:-4px;
+  top:3px;
+  width:3px;
+  height:6px;
+  background:#fff;
+  border-radius:1px;
+}
+
+.battery-level{
+  height:100%;
+  background:#00ff00;
+  width:80%;
+}
+
+/* Content */
 .card{
+  position:relative;
+  z-index:2;
   width:90%;
   text-align:center;
+  margin:120px auto 0 auto;
 }
 
 .avatar{
@@ -82,7 +133,6 @@ body{
   font-size:26px;
   font-weight:800;
   color:gold;
-  text-shadow:0 0 15px gold;
 }
 
 .timer{
@@ -92,10 +142,17 @@ body{
   margin:12px 0;
 }
 
-.vip{
-  margin:12px 0;
-  font-weight:800;
-  color:#00eaff;
+.timer.alert{
+  color:red;
+  animation:shake .4s infinite;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-4px)}
+  50%{transform:translateX(4px)}
+  75%{transform:translateX(-4px)}
+  100%{transform:translateX(0)}
 }
 
 .cta{
@@ -116,17 +173,28 @@ body{
 
 <div class="phone-frame">
   <div class="screen">
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <div id="time">12:00</div>
+      <div class="status-icons">
+        📶 📡
+        <div class="battery">
+          <div id="batteryLevel" class="battery-level"></div>
+        </div>
+        <span id="batteryText">80%</span>
+      </div>
+    </div>
+
     <div class="card">
 
       <img class="avatar" src="https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true">
       <div class="name">ANURAG REDDY SOUTH</div>
 
-      <div class="timer">1:00</div>
+      <div id="timer" class="timer">1:00</div>
 
       <p><b>🏆 IPL 2025 – 74/77 PASSED</b><br>
       <b>🏆 BBL 2026 – 64/67 PASSED</b></p>
-
-      <div class="vip">💎 VIP & Paid Predictions Available</div>
 
       <a class="cta"
       href="https://t.me/+478AfJUJOS8zYmI1">
@@ -134,8 +202,52 @@ body{
       </a>
 
     </div>
+
   </div>
 </div>
+
+<script>
+/* REAL TIME CLOCK */
+function updateTime(){
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  document.getElementById("time").innerText = hours + ":" + minutes;
+}
+setInterval(updateTime,1000);
+updateTime();
+
+/* FAKE DYNAMIC BATTERY */
+let battery = 80;
+setInterval(()=>{
+  battery = battery > 20 ? battery-1 : 80;
+  document.getElementById("batteryLevel").style.width = battery + "%";
+  document.getElementById("batteryText").innerText = battery + "%";
+},5000);
+
+/* TIMER */
+let totalSeconds = 60;
+const timerElement = document.getElementById("timer");
+
+const countdown = setInterval(() => {
+  let minutes = Math.floor(totalSeconds / 60);
+  let seconds = totalSeconds % 60;
+
+  timerElement.innerText =
+    minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+  if (totalSeconds <= 10) {
+    timerElement.classList.add("alert");
+  }
+
+  if (totalSeconds <= 0) {
+    clearInterval(countdown);
+  }
+
+  totalSeconds--;
+}, 1000);
+</script>
 
 </body>
 </html>
