@@ -6,7 +6,7 @@
 <title>ANURAG REDDY SOUTH VIP</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
 body{
   height:100vh;
@@ -29,19 +29,18 @@ body::after{
   z-index:0;
 }
 
-/* iPhone Frame */
+/* Phone Frame */
 .phone-frame{
   width:320px;
   height:650px;
   background:#000;
   border-radius:45px;
   padding:12px;
-  box-shadow:0 0 50px rgba(0,0,0,0.9);
+  box-shadow:0 0 50px rgba(0,0,0,.9);
   position:relative;
   z-index:2;
 }
 
-/* Notch */
 .phone-frame::before{
   content:'';
   position:absolute;
@@ -55,7 +54,7 @@ body::after{
   z-index:20;
 }
 
-/* Screen with Wallpaper */
+/* Screen */
 .screen{
   width:100%;
   height:100%;
@@ -67,13 +66,12 @@ body::after{
   color:#fff;
 }
 
-/* Dark Overlay */
 .screen::after{
   content:"";
   position:absolute;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,.55);
   top:0;
   left:0;
   z-index:1;
@@ -120,7 +118,7 @@ body::after{
   height:100%;
   background:#00ff00;
   width:80%;
-  transition:0.4s;
+  transition:.4s;
 }
 
 /* Content */
@@ -141,17 +139,16 @@ body::after{
   box-shadow:0 0 15px gold;
 }
 
-/* Name Clear */
 .name{
   margin:15px 0;
   font-size:22px;
   font-weight:900;
   color:#ffd700;
   letter-spacing:1px;
-  text-shadow:0 0 12px #000,0 0 25px #000;
+  text-shadow:0 0 15px #000;
 }
 
-/* Rotating Box Small + Pop Out */
+/* Rotating Box */
 .league-box{
   position:relative;
   width:75px;
@@ -173,13 +170,7 @@ body::after{
   object-fit:cover;
   border-radius:20px;
   transform:translateY(-8px);
-  animation:popRotate 2s infinite ease-in-out;
-}
-
-@keyframes popRotate{
-  0%{transform:translateY(-8px) scale(0.9);}
-  50%{transform:translateY(-12px) scale(1.05);}
-  100%{transform:translateY(-8px) scale(0.9);}
+  transition:.4s ease;
 }
 
 /* Timer */
@@ -262,7 +253,7 @@ body::after{
 
 <script>
 
-/* Live Clock */
+/* Clock */
 function updateTime(){
   const now=new Date();
   let h=now.getHours();
@@ -273,7 +264,7 @@ function updateTime(){
 setInterval(updateTime,1000);
 updateTime();
 
-/* Battery Animation */
+/* Battery */
 let battery=80;
 setInterval(()=>{
   battery=battery>20?battery-1:80;
@@ -302,6 +293,30 @@ const countdown=setInterval(()=>{
 
   totalSeconds--;
 },1000);
+
+/* 🔥 Proper Rotating Images */
+const imgs=[
+ "https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true",
+ "https://github.com/mrxsetup/lucknowfixer/blob/main/assets/logo16.png?raw=true",
+ "https://github.com/mrxsetup/lucknowfixer/blob/main/assets/logo15.png?raw=true"
+];
+
+let i=0;
+const logo=document.getElementById("logo");
+
+setInterval(()=>{
+  i=(i+1)%imgs.length;
+
+  logo.style.opacity="0";
+  logo.style.transform="translateY(-20px) scale(.8)";
+
+  setTimeout(()=>{
+    logo.src=imgs[i];
+    logo.style.opacity="1";
+    logo.style.transform="translateY(-8px) scale(1)";
+  },300);
+
+},2000);
 
 </script>
 
