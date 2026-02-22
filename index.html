@@ -5,9 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ANURAG REDDY SOUTH VIP</title>
 
+<!-- META PIXEL CODE -->
+<script>
+!function(f,b,e,v,n,t,s){
+if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1225101452813557');
+fbq('track', 'PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1225101452813557&ev=PageView&noscript=1"/>
+</noscript>
+<!-- END META PIXEL CODE -->
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-
 body{
   height:100vh;
   display:flex;
@@ -17,8 +37,6 @@ body{
   position:relative;
   overflow:hidden;
 }
-
-/* Neon Yellow Bottom */
 body::after{
   content:"";
   position:absolute;
@@ -28,8 +46,6 @@ body::after{
   background:#faff00;
   z-index:0;
 }
-
-/* Phone Frame */
 .phone-frame{
   width:320px;
   height:650px;
@@ -40,7 +56,6 @@ body::after{
   position:relative;
   z-index:2;
 }
-
 .phone-frame::before{
   content:'';
   position:absolute;
@@ -53,8 +68,6 @@ body::after{
   border-radius:20px;
   z-index:20;
 }
-
-/* Screen */
 .screen{
   width:100%;
   height:100%;
@@ -65,7 +78,6 @@ body::after{
   position:relative;
   color:#fff;
 }
-
 .screen::after{
   content:"";
   position:absolute;
@@ -76,8 +88,6 @@ body::after{
   left:0;
   z-index:1;
 }
-
-/* Status Bar */
 .status-bar{
   position:absolute;
   top:6px;
@@ -89,13 +99,11 @@ body::after{
   font-weight:bold;
   z-index:30;
 }
-
 .status-icons{
   display:flex;
   align-items:center;
   gap:6px;
 }
-
 .battery{
   width:22px;
   height:10px;
@@ -103,7 +111,6 @@ body::after{
   border-radius:3px;
   position:relative;
 }
-
 .battery::after{
   content:"";
   position:absolute;
@@ -113,15 +120,12 @@ body::after{
   height:6px;
   background:#fff;
 }
-
 .battery-level{
   height:100%;
   background:#00ff00;
   width:80%;
   transition:.4s;
 }
-
-/* Content */
 .card{
   position:relative;
   z-index:2;
@@ -129,7 +133,6 @@ body::after{
   text-align:center;
   margin:95px auto 0 auto;
 }
-
 .avatar{
   width:90px;
   height:90px;
@@ -138,7 +141,6 @@ body::after{
   object-fit:cover;
   box-shadow:0 0 15px gold;
 }
-
 .name{
   margin:15px 0;
   font-size:22px;
@@ -147,8 +149,6 @@ body::after{
   letter-spacing:1px;
   text-shadow:0 0 15px #000;
 }
-
-/* Rotating Box */
 .league-box{
   position:relative;
   width:75px;
@@ -162,7 +162,6 @@ body::after{
   overflow:visible;
   box-shadow:0 0 25px #00eaff,0 0 35px #ffd700;
 }
-
 .league-box img{
   position:absolute;
   width:95px;
@@ -172,20 +171,16 @@ body::after{
   transform:translateY(-8px);
   transition:.4s ease;
 }
-
-/* Timer */
 .timer{
   font-size:24px;
   font-weight:700;
   color:#00eaff;
   margin:8px 0;
 }
-
 .timer.alert{
   color:red;
   animation:shake .4s infinite;
 }
-
 @keyframes shake{
   0%{transform:translateX(0)}
   25%{transform:translateX(-3px)}
@@ -193,7 +188,6 @@ body::after{
   75%{transform:translateX(-3px)}
   100%{transform:translateX(0)}
 }
-
 .cta{
   display:inline-block;
   padding:10px 25px;
@@ -252,8 +246,6 @@ body::after{
 </div>
 
 <script>
-
-/* Clock */
 function updateTime(){
   const now=new Date();
   let h=now.getHours();
@@ -264,7 +256,6 @@ function updateTime(){
 setInterval(updateTime,1000);
 updateTime();
 
-/* Battery */
 let battery=80;
 setInterval(()=>{
   battery=battery>20?battery-1:80;
@@ -272,52 +263,39 @@ setInterval(()=>{
   document.getElementById("batteryText").innerText=battery+"%";
 },5000);
 
-/* Timer */
 let totalSeconds=60;
 const timerElement=document.getElementById("timer");
-
 const countdown=setInterval(()=>{
   let minutes=Math.floor(totalSeconds/60);
   let seconds=totalSeconds%60;
-
   timerElement.innerText=
   minutes+":"+(seconds<10?"0":"")+seconds;
-
   if(totalSeconds<=10){
     timerElement.classList.add("alert");
   }
-
   if(totalSeconds<=0){
     clearInterval(countdown);
   }
-
   totalSeconds--;
 },1000);
 
-/* 🔥 Proper Rotating Images */
 const imgs=[
  "https://github.com/mrxsetup/anuragreddy-south/blob/main/anuragreddy.jpg?raw=true",
  "https://github.com/mrxsetup/lucknowfixer/blob/main/assets/logo16.png?raw=true",
  "https://github.com/mrxsetup/lucknowfixer/blob/main/assets/logo15.png?raw=true"
 ];
-
 let i=0;
 const logo=document.getElementById("logo");
-
 setInterval(()=>{
   i=(i+1)%imgs.length;
-
   logo.style.opacity="0";
   logo.style.transform="translateY(-20px) scale(.8)";
-
   setTimeout(()=>{
     logo.src=imgs[i];
     logo.style.opacity="1";
     logo.style.transform="translateY(-8px) scale(1)";
   },300);
-
 },2000);
-
 </script>
 
 </body>
